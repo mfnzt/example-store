@@ -19,6 +19,11 @@ public class CustomerApiImpl implements CustomerApi {
     }
 
     @Override
+    public Customer getCustomerById(Long id) {
+        return customerSpi.findById(id);
+    }
+
+    @Override
     public List<Customer> getCustomersByLastNameAndFirstName(String lastName, String firstName) {
         return customerSpi.findByLastNameAndFirstName(lastName, firstName);
     }
