@@ -23,9 +23,8 @@ public class CustomerController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    CreateCustomerResponse createCustomer(@RequestBody final CreateCustomerRequest createCustomerRequest) {
-        final Long id = customerApi.createCustomer(createCustomerRequest.getCustomer());
-        return new CreateCustomerResponse(id);
+    Long createCustomer(@RequestBody final CreateCustomerRequest createCustomerRequest) {
+        return customerApi.createCustomer(createCustomerRequest.getCustomer());
     }
 
     @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
