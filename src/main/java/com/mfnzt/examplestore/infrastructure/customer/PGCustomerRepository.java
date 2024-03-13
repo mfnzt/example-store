@@ -1,4 +1,4 @@
-package com.mfnzt.examplestore.infrastructure.customer.pgsql;
+package com.mfnzt.examplestore.infrastructure.customer;
 
 import com.mfnzt.examplestore.domain.customer.Customer;
 import com.mfnzt.examplestore.domain.customer.CustomerSpi;

@@ -1,4 +1,4 @@
-package com.mfnzt.examplestore.service;
+package com.mfnzt.examplestore.application;
 
 import com.mfnzt.examplestore.domain.customer.Customer;
 import com.mfnzt.examplestore.domain.customer.CustomerSpi;
@@ -15,11 +15,11 @@ import java.util.Objects;
 @Testcontainers
 @SpringBootTest
 public class CustomerApiTest {
-    private final CustomerApiImpl testedCustomerServiceImpl;
+    private final CustomerApiImpl testedCustomerApiImpl;
 
     @Autowired
     public CustomerApiTest(CustomerSpi customerSpi) {
-        this.testedCustomerServiceImpl = new CustomerApiImpl(customerSpi);
+        this.testedCustomerApiImpl = new CustomerApiImpl(customerSpi);
     }
 
     @Test
@@ -32,9 +32,9 @@ public class CustomerApiTest {
         customer.setFirstName(firstName);
 
         // When
-        Long id = testedCustomerServiceImpl.createCustomer(customer);
+        Long id = testedCustomerApiImpl.createCustomer(customer);
         // Then
-        List<Customer> customerRetrieved = testedCustomerServiceImpl.getCustomersByLastNameAndFirstName(lastName, firstName);
+        List<Customer> customerRetrieved = testedCustomerApiImpl.getCustomersByLastNameAndFirstName(lastName, firstName);
         Assertions.assertNotNull(customerRetrieved);
         Assertions.assertFalse(customerRetrieved.isEmpty());
         Assertions.assertNotNull(customerRetrieved.

@@ -1,4 +1,4 @@
-package com.mfnzt.examplestore.infrastructure.customer.configuration;
+package com.mfnzt.examplestore.infrastructure.configuration;
 
 import com.mfnzt.examplestore.ExampleStoreApplication;
 import com.mfnzt.examplestore.domain.customer.CustomerSpi;
