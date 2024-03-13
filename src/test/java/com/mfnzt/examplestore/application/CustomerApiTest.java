@@ -23,7 +23,7 @@ public class CustomerApiTest {
     }
 
     @Test
-    public void testCreateAndGetCustomer() {
+    public void testCreateAndGetCustomerByLastNameAndFirstName() {
         // Given
         String lastName = "Doe";
         String firstName = "Mika";
@@ -39,5 +39,23 @@ public class CustomerApiTest {
         Assertions.assertFalse(customerRetrieved.isEmpty());
         Assertions.assertNotNull(customerRetrieved.
                 stream().filter(f -> Objects.equals(f.getId(), id)).toList());
+    }
+
+    @Test
+    public void testCreateAndGetCustomerById() {
+        // Given
+        String lastName = "Doe";
+        String firstName = "Jane";
+        Customer customer = new Customer();
+        customer.setLastName(lastName);
+        customer.setFirstName(firstName);
+
+        // When
+        Long id = testedCustomerApiImpl.createCustomer(customer);
+        customer.setId(id);
+        // Then
+        Customer customerRetrieved = testedCustomerApiImpl.getCustomerById(id);
+        Assertions.assertNotNull(customerRetrieved);
+        Assertions.assertEquals(customer, customerRetrieved);
     }
 }
