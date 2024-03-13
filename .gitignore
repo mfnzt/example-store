@@ -28,3 +28,6 @@ replay_pid*
 
 # Build results
 target
+
+# MacOS
+.DS_Store
