@@ -24,6 +24,12 @@ public class PGCustomerRepository implements CustomerSpi {
     }
 
     @Override
+    public Customer findById(Long id) {
+        CustomerEntity customerEntity = customerRepository.findById(id).orElse(null);
+        return customerEntity != null ? customerEntity.toCustomer() : null;
+    }
+
+    @Override
     public Long save(Customer customer) {
         return customerRepository.save(new CustomerEntity(customer)).getId();
     }

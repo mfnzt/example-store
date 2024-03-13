@@ -30,12 +30,14 @@ public class CustomerEntity implements Serializable {
     private String firstName;
 
     public CustomerEntity(Customer customer) {
+        this.id = customer.getId();
         this.lastName = customer.getLastName();
         this.firstName = customer.getFirstName();
     }
 
     public Customer toCustomer() {
         Customer customer = new Customer();
+        customer.setId(id);
         customer.setFirstName(getFirstName());
         customer.setLastName(getLastName());
         return customer;
