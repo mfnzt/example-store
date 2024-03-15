@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class PGCustomerRepository implements CustomerSpi {
@@ -19,8 +20,11 @@ public class PGCustomerRepository implements CustomerSpi {
     }
     @Override
     public List<Customer> findByLastNameAndFirstName(String lastName, String firstName) {
-        List<CustomerEntity> customer = customerRepository.findByLastNameAndFirstName(lastName, firstName);
-        return customer.stream().map(CustomerEntity::toCustomer).toList();
+        return customerRepository.findByLastNameAndFirstName(lastName, firstName)
+                .stream()
+                .filter(Objects::nonNull)
+                .map(CustomerEntity::toCustomer)
+                .toList();
     }
 
     @Override
